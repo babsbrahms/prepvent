@@ -24,6 +24,12 @@
 /react/yarn-error.log*
 
 
+# firebase
+/react/.firebaserc
+/react/firebase.json
+/react/.firebase
+./react/src/firebaseConfig.js 
+
 ######## API
 
 /api/node_modules

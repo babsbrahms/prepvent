@@ -116,7 +116,7 @@ export class Dashboard extends Component {
 
     getCountryData = ( country ) => {
         this.setState({ fetchingCountryDetails: true }, () => {
-            getCountryDetails(country)
+            getCountryDetails('Nigeria')
             .then(res => {
                 this.setState({
                     countryDetails: res.data.details,

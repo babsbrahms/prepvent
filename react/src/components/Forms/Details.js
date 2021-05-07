@@ -29,7 +29,7 @@ export default class Details extends Component {
     validation = (poster, summary, organizer, promoText) => {
         let error = '';        
 
-        if (!poster || !summary || !promoText || !organizer.phoneNumber || !organizer.email ) {
+        if (!poster || !summary ) {
             error = 'Complete the form'
         } else if (!validator.isEmail(organizer.email)) {
             error = 'Enter a valid email'
@@ -131,7 +131,7 @@ export default class Details extends Component {
                     <Form.Field>
                         <Header>
                             <Header.Content as='h5'>
-                            Promo Text (short summary)<Icon name="asterisk" color='red' size='mini' />
+                            Promo Text (short summary)
                             </Header.Content>
                             <Header.Subheader>
                             Add short text for people that want to share your event or add it to their calandar
@@ -145,7 +145,7 @@ export default class Details extends Component {
 
                     <Header>
                         <Header.Content as='h5'>
-                            Contact Information <Icon name="asterisk" color='red' size='mini' />
+                            Contact Information
                         </Header.Content>
                         <Header.Subheader>
                             Add contact information that event-goers can use to contact the event organizers

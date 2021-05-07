@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Segment, Icon, Dropdown, Label, Input, Select, List, Header, Dimmer, Loader } from 'semantic-ui-react';
+import { Form, Button, Segment, Icon, Dropdown, Label, Input, Select, List, Header, Dimmer, Loader, Card } from 'semantic-ui-react';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import MapContainer from '../Views/MapContainer';
@@ -33,7 +33,7 @@ export default class BasicInfo extends Component {
             // editLocation: false,
             changingZone: false,
             locationPredictions: [],
-            hasCountryDetails: false,
+            hasCountryDetails: true,
             gettingCountryDetails: false,
             countryDetails: {
                 country: '',
@@ -48,10 +48,10 @@ export default class BasicInfo extends Component {
         const { location } = this.props;
         this.getCategory()
         
-        if (location.country) {
-            this.selectEventCountry(location.country)
-        }
-        
+        // if (location.country) {
+        //     this.selectEventCountry(location.country)
+        // }
+        this.selectEventCountry('Nigeria')
     }
     
     getCategory = () => {
@@ -82,7 +82,7 @@ export default class BasicInfo extends Component {
 
         } else {
             if (location.street && location.state && location.city && location.country && location.position.lat) {
-                if ((location.country === countryDetails.country) && countryDetails.states.includes(location.state)) {
+                // if ((location.country === countryDetails.country) && countryDetails.states.includes(location.state)) {
                     let newTime = {
                         ...time,
                         startStr: moment.utc(time.start).utcOffset(time.localOffset).format(timeString),
@@ -93,14 +93,14 @@ export default class BasicInfo extends Component {
 
                     next(name, newTime, location , category, eventType, currency)
 
-                } else {
-                    this.setState({ showMap: true, gotLocationDetails: true })
-                    if (location.country !== countryDetails.country) {
-                        addAlert('Warning', `The country you selected is not ${countryDetails.country}`, false, false);
-                    } else {
-                        addAlert('Warning', `${location.state} is not a state in ${countryDetails.country}`, false, false);
-                    }
-                }
+                // } else {
+                //     this.setState({ showMap: true, gotLocationDetails: true })
+                //     if (location.country !== countryDetails.country) {
+                //         addAlert('Warning', `The country you selected is not ${countryDetails.country}`, false, false);
+                //     } else {
+                //         addAlert('Warning', `${location.state} is not a state in ${countryDetails.country}`, false, false);
+                //     }
+                // }
             } else {
                 this.setState({ showMap: true, gotLocationDetails: true })
                 addAlert('Warning', 'Problem getting your event location details. Manually input the values and use the map to select the location.', false, false);
@@ -258,6 +258,20 @@ export default class BasicInfo extends Component {
         // }
     }
 
+    addLocation = (text, street, city, state, country, position= { lat: 5.00, lng: 19.55 }) => {
+        this.setState({
+            ...this.state,
+            location: {
+                text: text,
+                street: street,
+                city: city,
+                state: state,
+                country: country,
+                position: position
+            }
+            
+        })
+    }
 
     render() {
         const { time, name, location, category, eventType, categoryList, eventList, showMap, gotLocationDetails,fetchinLocation, hasInitialLocation,
@@ -269,29 +283,8 @@ export default class BasicInfo extends Component {
 
         return (
         <div>
-            <Segment inverted>
-                <Header inverted>
-                    <Header.Content>Country <Icon name="asterisk" color='red' size='mini' /></Header.Content>
-                    <Header.Subheader>Select the country to hosting your event in, from the list of countries we operate at.</Header.Subheader>
-                </Header>
 
-                <Dropdown
-                disabled={mode === 'edit'}
-                fluid
-                selection
-                options={countries.map(country => ({ text: country, value: country, key: country }))}
-                defaultValue={location.country}
-                onChange={(e, { value, text }) => this.selectEventCountry(value)}
-                />
-
-                <Header inverted>
-                    <Header.Subheader>NOTE: Country can only be set when creating the event and they are not editable after the event is created.</Header.Subheader>
-                </Header>
-                {(gettingCountryDetails) && (<Dimmer active>
-                    <Loader inverted>Getting Country details...</Loader>
-                </Dimmer>)}
-            </Segment>
-            {(hasCountryDetails) && (!gettingCountryDetails) && (<Form>
+            <Form>
                 <Form.Field>
                 <label>Title <Icon name="asterisk" color='red' size='mini' /></label>
                 <input maxLength='75' defaultValue={name} name='name' onChange={(e) => this.onChangeName(e)} placeholder='Enter the title or name of your event' />
@@ -300,11 +293,11 @@ export default class BasicInfo extends Component {
 
                 <Form.Field>
                     <label>Location <Icon name="asterisk" color='red' size='mini' /></label>
-                    <Input maxLength={120} defaultValue={location.text} name={'text'} onChange={(e, data) => this.onChangeLocationInput(data)} placeholder='The location of your event'  labelPosition='right' type='text'>
+                    {/* <Input maxLength={120} defaultValue={location.text} name={'text'} onChange={(e, data) => this.onChangeLocationInput(data)} placeholder='The location of your event'  labelPosition='right' type='text'>
                         <Label basic><Icon loading={fetchinLocation} name='location arrow' /></Label>
                         <input />
                         <Label onClick={() => this.getLocationInfo()}> <Icon disabled={fetchinLocation} name='search' /></Label>
-                    </Input>
+                    </Input> */}
                     {/* <input maxLength={120} defaultValue={location.text} name={'text'} onChange={(e) => this.onChangeLocation(e)} placeholder='The location of your event' /> */}
                     <WordCount count={location.text} maxLength={120} />
                     <div style={style.center}>
@@ -312,41 +305,31 @@ export default class BasicInfo extends Component {
                             {locationPredictions.map((option, i )=>  <List.Item onClick={() => this.getLocationInfo()} key={i} as='a'>{option}</List.Item>)} 
                         </List>
                     </div>
+                    <Card.Group>
+                        <Card color={location.text === 'The Las Vegas Convention Center'? "pink" : ""} as="a" onClick={() => this.addLocation('The Las Vegas Convention Center', '3150 Paradise Rd', 'Las Vegas', 'Nevada', 'America' )}>
+                            <Card.Content>
+                                <Card.Header>The Las Vegas Convention Center </Card.Header>
+                                <Card.Description>Nevada, America</Card.Description>
+                            </Card.Content>
+                        </Card>
+
+                        <Card color={location.text === 'Dubai International Convention and Exhibition Center'? "pink" : ""} as="a" onClick={() => this.addLocation('Dubai International Convention and Exhibition Center', 'Trade CentreTrade Centre 2', 'Dubai', 'Dubai', 'United Arab Emirates' )}>
+                            <Card.Content>
+                                <Card.Header>Dubai International Convention and Exhibition Center</Card.Header>
+                                <Card.Description>Dubai, UAE</Card.Description>
+                            </Card.Content>
+                        </Card>
+
+                        <Card color={location.text === 'Madison Square Garden'? "pink" : ""} as="a" onClick={() => this.addLocation('Madison Square Garden', '4 Pennsylvania Plaza', 'New York', 'New York', 'America' )}>
+                            <Card.Content>
+                                <Card.Header>Madison Square Garden</Card.Header>
+                                <Card.Description>New York, America</Card.Description>
+                            </Card.Content>
+                        </Card>
+                    </Card.Group>
                 </Form.Field>
 
-                    {(hasInitialLocation || gotLocationDetails) &&(<Segment>
-                        <Form.Group widths='equal'>
-                            <Form.Field>
-                                <label>Street <Icon name="asterisk" color='red' size='mini' /></label>
-                                <input defaultValue={location.street} name={'street'} onChange={(e) => this.onChangeLocation(e)} placeholder='The location of your event' />
-                            </Form.Field>
 
-                            <Form.Field>
-                                <label>City <Icon name="asterisk" color='red' size='mini' /></label>
-                                <input defaultValue={location.city} name={'city'} onChange={(e) => this.onChangeLocation(e)} placeholder='The location of your event' />
-                            </Form.Field>
-
-                            <Form.Field>
-                                <label>State <Icon name="asterisk" color='red' size='mini' /></label>
-                                {/* <input disabled={!editLocation} defaultValue={location.state} name={'state'} onChange={(e) => this.onChangeLocation(e)} placeholder='The location of your event' /> */}
-                                <Select defaultValue={location.state} name={'state'} onChange={(e, dt) => this.onChangeLocationInput(dt)} placeholder='The location of your event' options={countryDetails.states.map(state => ({ key: state, text: state, value: state }))} />
-                            </Form.Field>
-
-                            <Form.Field>
-                                <label>Country <Icon name="asterisk" color='red' size='mini' /></label>
-                                {/* <input disabled={!editLocation} defaultValue={location.country} name={'country'} onChange={(e) => this.onChangeLocation(e)} placeholder='The location of your event' /> */}
-                                <Select disabled={mode} defaultValue={location.country} name={'country'} onChange={(e, dt) => this.onChangeLocationInput(dt)} placeholder='The location of your event' options={countries.map(country => ({ text: country, value: country, key: country }))} />
-
-                            </Form.Field>
-                        </Form.Group>
-                    <h5>latitude <Icon name="asterisk" color='red' size='mini' />: {location.position.lat}</h5>
-
-                    <h5>longitude <Icon name="asterisk" color='red' size='mini' />: {location.position.lng}</h5>
-                    {(!showMap) && (<a onClick={() => this.setState({ showMap: true })}>change latitude and longitude</a>)}
-
-                    </Segment>)}
-                    {(showMap) && (<MapContainer eventLocation={location.position} pickPosition newPosition={(latLng) => this.setState({ location: { ...this.state.location, position: latLng } })}/>)}
-                
                 
                 {(!changingZone) && (<Form.Group widths='equal'>
                     <Form.Field>
@@ -433,7 +416,7 @@ export default class BasicInfo extends Component {
                     Save
                     <Icon name='arrow right' />
                 </Button>
-            </Form>)}
+            </Form>
         </div>
         )
     }
