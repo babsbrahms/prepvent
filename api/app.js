@@ -22,9 +22,10 @@ const country = require('./route/country')
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
 
+let mongoUri = process.env.NODE_ENV === "production" ? process.env.MONGO_PROD : process.env.MONGO_DEV
 
 // mongoose
-mongoose.connect('mongodb://localhost:27017/prepvent', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect(mongoUri, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 let mdb = mongoose.connection;
 
 mdb.once('open', () => {
