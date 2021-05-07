@@ -1,0 +1,22 @@
+#prepvent-carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../../utils/images/icon.png');
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition-property: background-image;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
+}
+
+.prep-icon {
+    background-color: #494747;
+    border-radius: 50%;
+    margin: 0px;
+}

@@ -1,0 +1,42 @@
+[x] fix transaction model || 1: ticketSale; 2: Promotion
+[x] fix state model || how to get accurate count per states => upsert info
+[-] add mongoose unique validator to user ===PLUGIN
+[x] reserve ticket for 15 mins on backend 10 min to buy == Shopping cart
+[] add email
+[x] preview email template
+[x] Tie promotion to transaction using transactionId
+[x] check follower count increment in register
+[x] use end time in getting all event in home page
+[x] use end time in getting findUpdatePromotion in helper
+[x] add click counter to promotion mail and promotion route
+[-] use token to manage subscription and follow.result.upserted to know the value added
+[x] update promotion postSent for event-update type
+[x] tie ticketSale and registration for refunds (after each refund: increment amount refunded) and 
+
+
+
+// mailing list (every week)
+[] fiter using 'detail.state' and event happenning that week
+[] add promotion id to link= /e/eventId?pid=id
+[] set 'detail.done': true for promotion
+[] make sure same event do not appear in promotion and weeks events
+[] Add prevent unsubcribe link to messages
+
+// socail (every day)
+[] fiter using 'details.media': twitter|instagram etc
+[] add promotion id to link= /e/eventId?pid=id
+[] set 'detail.done': true
+
+
+// Payment ended events to Organizers  (every day)
+[] 
+
+
+// Payment cancellation refunds to registered (every day)
+[]
+
+
+// Resend failed email (every day)
+[] search for sent: false
+[] send the email
+[] set sent: true

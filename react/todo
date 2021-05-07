@@ -1,0 +1,101 @@
+[-] add lastupdate to pages
+[-] factor in sms cost in calculations of ticket price
+[-] make sure that contact is unique for all registion for an email
+[-] ability to make a group purchase in dashboard;
+[-] save card for later user function
+[-] change transitionProperty to opactity || transform(scale, translate)
+[-] disable promotion methoods when working on a methood
+[-] add autocomplete to basicInfo
+[-] Tell organizers to notify event goers about event updates (edit = name, location, time)
+[-] when event is created navigate to dashboard and tell them about the features
+[-] after edit open a confirm box to tell them to send broadcast
+[-] use credit card token for recurrent charges
+[x] make event appear on google events (structured data - use eventbrite idea)
+[x] make image show when shared on whatappa or twitter
+[] make sure email editor can upload static images
+[] documents cancelled event so that we can refund then their money
+[] verify remaining unit or quota for email and sms before sending messages
+[x] registration list download should be csv on the front-end and backend
+[] use unique identifier in sign-in
+[x] add ticket qtyRemaining in event page if it is less tha 50 tickets
+[x] redo error handling to include res.data
+[x] add whatsapp to update method
+[x] track promotion click
+[-] add 'payment at venue' to ticket type || change function that determines free event
+[-] resend ticket scam i.e people using others username
+[x] check basicInfo time
+[-] approve [mailing list, social] promotion
+[x] add whatsapp tp social promotion
+[-] add Sales Channel ['At event' || 'Online']
+[x] add ticket verify so see ticket status
+[x] Deal with image upload and remove static image
+[x] add only need key_value pairs to liked events
+[x] PAYSTACK REFUND: 7-12 working days.
+[x] Talk about the clicks in promotion
+[x] verify promotion 5o make sure they donot overlap for a start
+[x] make date utc for featuredEvent promotion
+[-] email check for junk 
+[x] remove paystack test key
+[x] time utc and localOffset in basicInfo
+[x] Add event data to email promotion
+[x] validate social promotion date
+[x] randoff numbers to whole
+[x] add disclamer to event promotion
+[x] add public key to .env
+[x] cancelled or end event should not create promotion
+[-] edit poster should have thesame url
+[] event location state should not change
+[x] disable buttons while performing actions
+[] add analytics option for email sending
+[] restrict access to google key
+[] add communications to events
+[] people can specify their event type
+[x] test forget and rest password
+
+//BUGS
+[] account modal
+[x] bulk invite
+[] buyers email
+
+
+//FETCHING METHODS
+[] update fetching conditions in Home (use a unique id at the backend to check if the data has not changed)
+[] in Profile (use the ip-address or something unique to confirm the last login computer, if not the last, update myEvents)
+
+
+//INFOBIP SMS CHARGES 
+[1] Using the open marketing route SMS charges for Airtel could be as low as 1.60K, while MTN, Glo and 9mobie will be at a flat rate of 1.75K
+[2] While over the corporate bind messages which is used for transactional/OTP notifications as well as delivering messages to numbers on the DND, SMS is charged at 2.50 MTN. 2.50 Glo, 1.60 Airtel, 2.75 (9Mobile).
+
+// CINEMA Ticket idea
+[] craete normal event && ticketType === 'cinema'
+[] create differnt ticket (start - end time) to
+[] Add the tickets to different or same dates (similar to Group Product idea on wordpress: usb product page and different sizes and types page attache to product page)
+
+//test cards paystack
+Card Number: 5078 5078 5078 5078 12 (Verve)
+Expiry Date: any date in the future
+CVV: 081
+PIN: 1111
+
+
+===============================================================================
+           <img src="http://www.google-analytics.com/collect?v=1
+               &tid=UA-12345678-1
+               &cid=12345
+               &t=event
+               &ec=email
+               &ea=open
+               &el=recipient_id
+               cs=newsletter
+               &cm=email
+               &cn=Campaign_Name
+                " />
+=============================================================
+// follower count
+https://www.instagram.com/<username>/?__a=1
+
+------------
+http://api.twittercounter.com?twitter_id=813286&apikey=[api_key]
+
+==============================================================

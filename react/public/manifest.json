@@ -1,0 +1,25 @@
+{
+  "short_name": "PrepVENT",
+  "name": "PreVENT connects event organizers and event goers",
+  "icons": [
+    {
+      "src": "smallP.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "P.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "P.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#e61a8d",
+  "background_color": "#ffffff"
+}
