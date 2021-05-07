@@ -26,15 +26,15 @@ export class Home extends Component {
             activeItem: 'All',
             events: props.events,
             loading: true,
-            state: props.state || 'Lagos',
-            country: props.country || 'Nigeria',
+            state: 'Lagos',
+            country: 'Nigeria',
             subscriber: {
                 subscribe: true,
                 // name: this.props.customer.name || '',
                 email: this.props.customer.email || '',
                 // phoneNumber: this.props.customer.phoneNumber|| '',
                 states: [],
-                country: props.country || 'Nigeria',
+                country: 'Nigeria',
             },
             subscriberError: '',
             openModal: false,
@@ -227,7 +227,7 @@ export class Home extends Component {
                         />
                     </Menu.Item>)}
 
-                    <Menu.Item position='right'>
+                    {/* <Menu.Item position='right'>
                         <Dropdown
                             placeholder='Select State'
                             defaultValue={state}
@@ -237,7 +237,7 @@ export class Home extends Component {
                             compact
                             onChange={(e, data) => this.addState(data, this.props.selectedCountry)}
                         />
-                    </Menu.Item>
+                    </Menu.Item> */}
                 </Menu>
                 {(carouselImages.length > 0) && (<div>
                     <Carousel bigSize={this.state.bigSize} images={carouselImages} />
@@ -291,13 +291,13 @@ export class Home extends Component {
             {(!loading) && (<Segment>
                 {(events.length === 0) && (<div>
                     <Header as='h3' icon textAlign='center'>
-                        <Icon name='find' color='red'/>
+                        <Icon name='find' color="black" />
                         <Header>
                             <Header.Content>
-                                Not found
+                                No Event
                             </Header.Content>
                             <Header.Subheader>
-                                There is no event in {state}, {country}. Search for events in other states...
+                                There is no event currently. You can create your event from the organizer memu above.
                             </Header.Subheader>
                         </Header>
                     </Header>
@@ -358,10 +358,10 @@ export class Home extends Component {
 
                     {(events.length > 0) && (events.filter(x => (x.time.startStr).includes(dateFilter)).length === 0) && (
                         <Header as='h3' icon textAlign='center'>
-                            <Icon name='find' color='red'/>
+                            <Icon name='find' color="black" />
                             <Header>
                                 <Header.Subheader>
-                                    There is no event in <b>{state}</b> starting <b>{activeItem.toLocaleLowerCase()}</b>. Use the selection at the top left corner to filter event
+                                    There is no event starting <b>{activeItem.toLocaleLowerCase()}</b>. Use the selection at the top left corner to filter event
                                 </Header.Subheader>
                             </Header>
                         </Header>

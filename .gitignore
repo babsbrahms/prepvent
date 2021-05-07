@@ -28,7 +28,7 @@
 /react/.firebaserc
 /react/firebase.json
 /react/.firebase
-./react/src/firebaseConfig.js 
+/react/src/firebaseConfig.js 
 
 ######## API
 
