@@ -52,9 +52,9 @@ app.use('/api/country', country)
 
 const root = require('path').join(__dirname, 'public', 'build')
 app.use(express.static(root));
-// app.get("*", (req, res) => {
-//     res.sendFile('index.html', { root });
-// })
+app.get("*", (req, res) => {
+    res.sendFile('index.html', { root });
+})
 // app.get('*', function(req, res) {
 //   res.sendFile(path.join(__dirname, "public", 'build', 'index.html'));
 // });
