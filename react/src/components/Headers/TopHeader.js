@@ -276,7 +276,7 @@ class TopHeader extends Component {
                             </Dropdown.Menu>
                         </Dropdown>
                         <b style={{ paddingRight: '2px', paddingLeft: '2px'}}>|</b>
-                        <Dropdown
+                        {/* <Dropdown
                             placeholder='Countires'
                             defaultValue={selectedCountry}
                             direction={'left'}
@@ -285,7 +285,7 @@ class TopHeader extends Component {
                             options={countries.map((country) => ({ name: country, value: country, text: country }))}
                             compact
                             onChange={(e, data) => this.getCountryDetails(data.value)}
-                        />
+                        /> */}
                         
                            
                     </div>
