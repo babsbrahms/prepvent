@@ -20,11 +20,11 @@ const Profile = ({ user, onChange, onUploadImage, edit }) => {
             <input defaultValue={user.email} disabled={edit} name='email' type='email' onChange={(e) => onChange(e.target)} placeholder='Enter your email address'/>
             </Form.Field>
             <Form.Field>
-            <label>Phone number<Icon name="asterisk" color='red' size='mini' /></label>
+            <label>Phone number</label>
             <input defaultValue={user.phoneNumber} name='phoneNumber' type='tel' onChange={(e) => onChange(e.target)} placeholder='Enter your phone number'/>
             </Form.Field>
             <Form.Field>
-            <label>Description<Icon name="asterisk" color='red' size='mini' /></label>
+            <label>Description</label>
                 <textarea key={'profileDescription'} maxLength={300}  name="description" defaultValue={user.description} onChange={(e) => onChange(e.target)} placeholder={'Describe what your organization does and the type of events people can expect from you.'} />
             </Form.Field>
         </Form>
