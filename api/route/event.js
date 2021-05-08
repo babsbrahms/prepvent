@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const moment = require('moment');
-let mySecretKey = (process.env.NODE_ENV || 'development') == 'development'? process.env.PAYSTACK_SECRET_TEST_KEY : PAYSTACK_SECRET_LIVE_KEY;
+let mySecretKey = (process.env.NODE_ENV || 'development') == 'development'? process.env.PAYSTACK_SECRET_TEST_KEY : process.env.PAYSTACK_SECRET_LIVE_KEY;
 
 var paystack = require('paystack')(mySecretKey);
 
