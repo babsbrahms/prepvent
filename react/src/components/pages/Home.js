@@ -297,7 +297,7 @@ export class Home extends Component {
                                 No Event
                             </Header.Content>
                             <Header.Subheader>
-                                There is no event currently. You can create your event from the organizer memu above.
+                                There is no event currently. <Link to="/create">Click here to create an event</Link>
                             </Header.Subheader>
                         </Header>
                     </Header>
