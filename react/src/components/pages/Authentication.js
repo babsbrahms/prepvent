@@ -256,14 +256,15 @@ export class Authentication extends Component {
     updateUserProfile = () => {
         const { data } = this.state;
 
-        if (!data.description || !data.phoneNumber || !data.photoUrl || !data.email || !data.name )  {
+        if (!data.photoUrl || !data.email || !data.name )  {
             this.messageBox.addMessage('Error', 'Complete the account form!', false, false);
     
         } else if (!validator.isEmail(data.email)) {
             this.messageBox.addMessage('Error', 'Enter a valid email address!' , false, false);
  
         } else { 
-            this.setState({ currentForm: 'BankAccount', maxIndex: 2 })
+           // this.setState({ currentForm: 'BankAccount', maxIndex: 2 })
+           this.createUser()  
         }
 
     }
@@ -282,7 +283,7 @@ export class Authentication extends Component {
         const { data } = this.state;
 
         this.setState({ loading: true, creatingAcct: true }, () => {
-            if (data.photoUrl  === 'string') {
+            if (typeof data.photoUrl  === 'string') {
                 this.uploadUserAcct(data)
             } else { 
                 this.uploadPoster(data.photoUrl, data.firebaseId)
@@ -506,13 +507,13 @@ export class Authentication extends Component {
                             </Step.Content>
                             </Step>
                     
-                            <Step onClick={() => this.setState({ currentForm: 'BankAccount' })} active={this.state.currentForm === 'BankAccount'} disabled={(this.state.maxIndex < 2)}>
+                            {/* <Step onClick={() => this.setState({ currentForm: 'BankAccount' })} active={this.state.currentForm === 'BankAccount'} disabled={(this.state.maxIndex < 2)}>
                             <Icon name='money' />
                             <Step.Content>
                                 <Step.Title>Payment</Step.Title>
                                 <Step.Description>Enter your bank information</Step.Description>
                             </Step.Content>
-                            </Step>
+                            </Step> */}
                     </Step.Group>
                 
                     <Segment attached loading={creatingAcct}>
@@ -526,12 +527,12 @@ export class Authentication extends Component {
                                 />
                                 <br />
                                 <Button color='pink' onClick={() => this.updateUserProfile()} floated='right'>
-                                    Next
+                                    Save
                                     <Icon name='arrow right' />
                                 </Button>
                             </div>)}
 
-                            {(currentForm === 'BankAccount') && (
+                            {/* {(currentForm === 'BankAccount') && (
                                 <div>
                                     <Header textAlign='center'>
                                         <Header.Subheader>
@@ -556,15 +557,13 @@ export class Authentication extends Component {
                                     <br />
                                     <br />
                                 
-                                    {/* <Button color='pink' onClick={() => this.updateUserPayment()} floated='right'>
-                                        Save
-                                    </Button> */}
+      
                                     <Button color='pink' onClick={()=> this.setState({ currentForm: 'Profile' })} floated='left'>
                                         <Icon name='arrow left' />
                                         Back
                                     </Button>
                                 </div>
-                            )}
+                            )} */}
 
 
                     </Segment>
