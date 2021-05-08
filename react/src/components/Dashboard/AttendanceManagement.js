@@ -50,7 +50,7 @@ export default class AttendanceManagement extends Component {
                     </Grid.Column>
                 </Grid>
 
-                <Divider />
+                {/* <Divider />
                 <Header>
                     Check-In
                 </Header>
@@ -92,7 +92,7 @@ export default class AttendanceManagement extends Component {
                         </Segment>
                     </Accordion.Content>
 
-                </Accordion>      
+                </Accordion>       */}
             </div>
         )
     }

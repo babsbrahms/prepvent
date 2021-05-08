@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Segment, Icon, Confirm } from 'semantic-ui-react';
+import { Button, Segment, Icon, Confirm, Card } from 'semantic-ui-react';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import PaystackButton from 'react-paystack';
@@ -94,6 +94,20 @@ export default class PayStack extends Component {
             <div style={style.alignedRight}>
                 <Button color='red' inverted onClick={() => this.show()}>Cancel</Button>
             </div>
+
+            <Card>
+                <Card.Content>
+                    <Card.Header>
+                        Card No: 4084084084084081
+                    </Card.Header>
+                    <Card.Description>
+                        EXPIRY: 05/22
+                    </Card.Description>
+                    <Card.Meta>
+                        CVV: 408
+                    </Card.Meta>
+                </Card.Content>
+            </Card>
         </Segment>
         )
     }

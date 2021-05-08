@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const moment = require('moment');
-let mySecretKey = (process.env.NODE_ENV || 'development') == 'development'? process.env.PAYSTACK_SECRET_TEST_KEY : PAYSTACK_SECRET_LIVE_KEY;
+let mySecretKey = (process.env.NODE_ENV || 'development') == 'development'? process.env.PAYSTACK_SECRET_TEST_KEY : process.env.PAYSTACK_SECRET_LIVE_KEY;
 
 var paystack = require('paystack')(mySecretKey);
 
@@ -277,7 +277,10 @@ router.get(`/all_event/:country/:state`, (req, res) => {
     const { country, state } = req.params;
 
     // 
-    Event.find({ "location.country": country, "location.state": state, published: true, 'time.start': {"$gt": new Date(moment.utc().valueOf()) } }).sort({ 'time.start': 1 })
+    // Event.find({ "location.country": country, "location.state": state, published: true, 'time.start': {"$gt": new Date(moment.utc().valueOf()) } }).sort({ 'time.start': 1 })
+    // .then(events => res.status(200).json({ events }))
+    // .catch(err => res.status(400).json({ msg: err.message }))
+    Event.find({ published: true, 'time.start': {"$gt": new Date(moment.utc().valueOf()) } }).sort({ 'time.start': 1 })
     .then(events => res.status(200).json({ events }))
     .catch(err => res.status(400).json({ msg: err.message }))
 

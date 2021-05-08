@@ -116,7 +116,7 @@ export class Dashboard extends Component {
 
     getCountryData = ( country ) => {
         this.setState({ fetchingCountryDetails: true }, () => {
-            getCountryDetails(country)
+            getCountryDetails('Nigeria')
             .then(res => {
                 this.setState({
                     countryDetails: res.data.details,
@@ -401,8 +401,8 @@ export class Dashboard extends Component {
                         <Menu.Item as='a' disabled={data.deleted && (moment.utc().valueOf() > moment.utc(data.time.end).valueOf())} onClick={() => this.setState({ selection: 'Share', visible: false })}> <Icon name='share square' />Share</Menu.Item>
                         <Menu.Item as='a' disabled={data.deleted} onClick={() => this.setState({ selection: 'Ticketing', visible: false  })}> <Icon name='ticket' />Ticketing</Menu.Item>
                         <Menu.Item as='a' disabled={data.deleted} onClick={() => this.setState({ selection: 'Keep In Touch', visible: false  })}> <Icon name='tty' />Keep In Touch</Menu.Item>
-                        <Menu.Item as='a' disabled={data.deleted && (moment.utc().valueOf() > moment.utc(data.time.end).valueOf())} onClick={() => this.setState({ selection: 'Promotion', visible: false  })}> <Icon name='bullhorn' />Promotion</Menu.Item>
-                        <Menu.Item as='a' disabled={data.deleted} onClick={() => this.setState({ selection: 'Registration & check-in', visible: false  })}> <Icon name='users' />Registration & check-in</Menu.Item>
+                        {/* <Menu.Item as='a' disabled={data.deleted && (moment.utc().valueOf() > moment.utc(data.time.end).valueOf())} onClick={() => this.setState({ selection: 'Promotion', visible: false  })}> <Icon name='bullhorn' />Promotion</Menu.Item> */}
+                        <Menu.Item as='a' disabled={data.deleted} onClick={() => this.setState({ selection: 'Registration & check-in', visible: false  })}> <Icon name='users' />Registration</Menu.Item>
                     
                     </Sidebar>
 
